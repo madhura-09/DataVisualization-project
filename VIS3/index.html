@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+  <script src="js/main.js"></script>
+  <link rel='stylesheet' href='css/styles.css'>
+
+</head>
+<body>
+  <div id="headbar">
+  CSE 578 - DATA VISUALIZATION
+  </div>    
+
+  <div id="options">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Country:
+    <select id = 'countries' class='btn btn-secondary dropdown-toggle' onchange="drawvis3();">
+      <option value="allCountries">All</option>
+      <option value="Aleppo">Aleppo </option>
+      <option value="Colombia">Colombia</option>
+      <option value="Iran">Iran</option>
+      <option value="Karachi">Karachi</option>
+      <option value="Lebanon">Lebanon</option>
+      <option value="Nairobi">Nairobi</option>
+      <option value="Saudiarabia">Saudi Arabia</option>
+      <option value="Thailand">Thailand</option>
+      <option value="Turkey">Turkey</option>
+      <option value="Venezuela">Venezuela</option>
+      <option value="Yemen">Yemen</option>
+
+    </select >  
+    <input type="radio" name='gender' value="male" style='margin: 0 1px 0 100px' onchange="drawvis3();"> Male
+    <input type="radio" name='gender' value="female" style='margin: 0 1px 0 100px' onchange="drawvis3();"> Female 
+    <input type="radio" name='gender' value="all" style='margin: 0 1px 0 100px' onchange="drawvis3();" checked=checked> Both 
+  </div>
+  <svg id='svg3'></svg>
+</body>
+</html>

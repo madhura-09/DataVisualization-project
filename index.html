@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+  <script src="js/main.js"></script>
+  <script src="VIS1/js/main.js"></script>
+  <script src="VIS4/js/main.js"></script>
+  <script src="VIS5/js/main.js"></script>
+  <script type="text/javascript">
+    function changeDisplay(name){
+      if(name=="con1"){
+        document.getElementById("con2").style.display = "none";
+        document.getElementById("con3").style.display = "none";
+        document.getElementById("con1").style.display = "block";
+      }
+      if(name=="con2"){
+        document.getElementById("con1").style.display = "none";
+        document.getElementById("con3").style.display = "none";
+        document.getElementById("con2").style.display = "block";
+      }
+      if(name=="con3"){
+        document.getElementById("con1").style.display = "none";
+        document.getElementById("con2").style.display = "none";
+        document.getElementById("con3").style.display = "block";
+      }
+    }
+
+  </script>
+  <link rel='stylesheet' href='css/styles.css'>
+</head>
+<body>
+<header style="text-align:center;">
+  <h2>VAST 2010 Mini-Challenge 2: Characterization of Pandemic Spread</h2>
+</header>
+<!--  <div id="headbar">-->
+<!--  CSE 578 - DATA VISUALIZATION-->
+<!--  </div>    -->
+
+<!--  <div id="options">-->
+<!--    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Country:-->
+<!--    <select id = 'countries' class='btn btn-secondary dropdown-toggle'>-->
+<!--      <option value="all">ALL</option>-->
+<!--      <option value="aleppo">India </option>-->
+<!--      <option value="colombia">United States</option>-->
+<!--    </select>-->
+<!--    <input type="radio" name='gender' value="male" style='margin: 0 1px 0 100px' onchange="genderChange(value)"> Male-->
+<!--    <input type="radio" name='gender' value="female" style='margin: 0 1px 0 100px' onchange="genderChange(value)"> Female-->
+<!--    <input type="radio" name='gender' value="all" style='margin: 0 1px 0 100px' onchange="genderChange(value)" checked=checked> Both-->
+<!--  </div>-->
+
+
+
+<div class="content">
+  <ul class="nav  " id="myTab" role="tablist">
+    <li class="nav-item active"><a class="nav-link active" href="#con1" onclick="changeDisplay('con1')">Death toll &nbsp</a></li>
+    <li class="nav-item"><a class="nav-link" href="#con2" onclick="changeDisplay('con2')">Visualization 4 &nbsp</a></li>
+    <li class="nav-item"><a class="nav-link" href="#con3" onclick="changeDisplay('con3')">Visualization 5</a></li>
+  </ul>
+  <hr/>
+</div>
+
+<!--  <ul class="nav nav-tabs" id="myTab" role="tablist">-->
+<!--        <li class="nav-item active"  role="presentation"><a data-toggle="tab" class="nav-link active" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a></li>-->
+<!--        <li class="nav-item"  role="presentation"><a data-toggle="tab" class="nav-link" href="#view2" role="tab" aria-controls="home" aria-selected="false">World and Temporal Views</a></li>-->
+<!--        <li class="nav-item"  role="presentation"><a data-toggle="tab" class="nav-link" href="#barbubble" role="tab" aria-controls="home" aria-selected="false">Demographic and Symptom Evolution</a></li>-->
+<!--        <li class="nav-item"  role="presentation"><a data-toggle="tab" class="nav-link" href="#inno" role="tab" aria-controls="home" aria-selected="false">Clustered Characteristic Explorer</a></li>-->
+<!--  </ul>-->
+
+<!--
+<div class="content">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item active"  role="presentation"><a data-toggle="tab" class="nav-link active" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a></li>
+        <li class="nav-item"  role="presentation"><a data-toggle="tab" class="nav-link" href="#view2" role="tab" aria-controls="home" aria-selected="false">World and Temporal Views</a></li>
+        <li class="nav-item"  role="presentation"><a data-toggle="tab" class="nav-link" href="#barbubble" role="tab" aria-controls="home" aria-selected="false">Demographic and Symptom Evolution</a></li>
+        <li class="nav-item"  role="presentation"><a data-toggle="tab" class="nav-link" href="#inno" role="tab" aria-controls="home" aria-selected="false">Clustered Characteristic Explorer</a></li>
+    </ul>
+</div>-->
+
+<div id='con1' style="text-align:center;">
+  <div id="options">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Country:
+    <select id = 'countries' class='btn btn-secondary dropdown-toggle' onchange="drawLinechart();drawvis2();drawvis3();">
+      <option value="allCountries">All</option>
+      <option value="Aleppo">Aleppo </option>
+      <option value="Colombia">Colombia</option>
+      <option value="Iran">Iran</option>
+      <option value="Karachi">Karachi</option>
+      <option value="Lebanon">Lebanon</option>
+      <option value="Nairobi">Nairobi</option>
+      <option value="Saudiarabia">Saudi Arabia</option>
+      <option value="Thailand">Thailand</option>
+      <option value="Turkey">Turkey</option>
+      <option value="Venezuela">Venezuela</option>
+      <option value="Yemen">Yemen</option>
+
+    </select >
+    <input type="radio" name='gender' value="male" style='margin: 0 1px 0 100px' onchange="drawLinechart();drawvis2();drawvis3();"> Male
+    <input type="radio" name='gender' value="female" style='margin: 0 1px 0 100px' onchange="drawLinechart();drawvis2();drawvis3();"> Female
+    <input type="radio" name='gender' value="all" style='margin: 0 1px 0 100px' onchange="drawLinechart();drawvis2();drawvis3();" checked=checked> Both
+  </div><br>
+  <centre> Visualization 1 : Multi-Line Chart analysing the death toll of patients in each country/city</centre>
+  <br>
+  <svg id='svg1'></svg>
+  <br>
+  <centre> Visualization 2 : Stacked bar graph showing effect of symptoms on different age groups </centre>
+  <br>
+  <svg id='svg2'></svg>
+  <br>
+  <centre> Visualization 3 : Analysis of pandemic spread (hospitalized and dead) in different cities </centre>
+  <br>
+  <svg id='svg3'></svg>
+</div>  
+
+<div id='con2' style="text-align:center; display: none">
+  <br>
+  <centre> Treemap showing the death and hospitalized count in the form of color luminance </centre>
+  <br>
+  <br>
+  <div id="options1">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Survival :
+    <select id = 'survival' class='btn btn-secondary dropdown-toggle' onchange="survivalChange(value);">
+      <option value="deaths">Deaths</option>
+      <option value="hospitalized" >Hospitalized</option>
+    </select >
+    <br><br>
+  </div>
+  <svg id='svg4'></svg>
+</div>
+
+<div id='con3' style="text-align:center; display: none">
+  <br>
+  <centre> Bubble Chart showing the commonality between predominant symptoms in dead patients - Innovative </centre>
+  <br>
+  <svg id='svg5'></svg>
+</div> 
+
+</body>
+</html>

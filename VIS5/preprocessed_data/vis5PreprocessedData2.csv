@@ -1,0 +1,21 @@
+SYMPTOM,DEATHS,x,y
+abdominal pain,108185,50,100
+abscess,21,100,40
+injury,8240,200,80
+bleeding,26322,370,400
+body pain,110390,250,250
+breathing,34,270,70
+cough,374,450,270
+dizziness,115,450,900
+fever,45362,100,300
+headache,4002,280,360
+laceration,135,140,140
+migraine,12,450,320
+pregnant,207,400,170
+urinate,147,350,320
+vaginal,467,200,390
+vision,119,400,100
+vomiting,141466,300,150
+Heart Problems,119,180,320
+Vocal Problems,14,70,200
+others,76296,380,250
